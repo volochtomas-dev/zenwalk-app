@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Music, X, Search, AlertCircle, Link as LinkIcon } from 'lucide-react';
+import { Music, X, Search, AlertCircle, Link as LinkIcon, ExternalLink } from 'lucide-react';
 
 interface SpotifyWidgetProps {
   initialUrl: string;
@@ -11,6 +11,12 @@ export const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({ initialUrl }) => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [showInput, setShowInput] = useState(false);
+
+  // Intentamos obtener una URL limpia para abrir en la app externa
+  // De https://open.spotify.com/embed/playlist/abc -> https://open.spotify.com/playlist/abc
+  const getExternalLink = () => {
+    return embedUrl.replace('/embed', '');
+  };
 
   // Function to extract the correct embed URL from various Spotify link formats
   const processSpotifyLink = (input: string) => {
@@ -108,6 +114,23 @@ export const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({ initialUrl }) => {
 
       {/* Controls Area */}
       <div className="p-4 bg-zen-50 flex flex-col gap-3">
+         
+         {/* Botón Importante para abrir app nativa */}
+         <a 
+            href={getExternalLink()} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#1DB954] text-white rounded-lg text-sm font-bold hover:bg-[#1ed760] transition-all shadow-md"
+         >
+            <ExternalLink size={16} />
+            Abrir en App Spotify
+         </a>
+         <p className="text-[10px] text-zen-500 text-center leading-tight">
+            Úsalo para escuchar canciones completas y mantener la música con la pantalla apagada.
+         </p>
+         
+         <div className="h-px bg-zen-200 my-1"></div>
+
          {!showInput ? (
              <div className="flex flex-col gap-2">
                  <button 
@@ -117,9 +140,6 @@ export const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({ initialUrl }) => {
                      <LinkIcon size={16} />
                      Cambiar Playlist o Canción
                  </button>
-                 <p className="text-[10px] text-zen-400 text-center px-2">
-                    Si no escuchas la canción completa, inicia sesión en Spotify.com en este navegador.
-                 </p>
              </div>
          ) : (
              <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
