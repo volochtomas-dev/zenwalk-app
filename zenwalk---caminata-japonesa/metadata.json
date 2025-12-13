@@ -1,0 +1,5 @@
+{
+  "name": "ZenWalk - Caminata Japonesa",
+  "description": "Una aplicación de caminata guiada de 40 minutos con intervalos de 3 minutos, integración de Spotify y consejos de mindfulness impulsados por Gemini.",
+  "requestFramePermissions": []
+}

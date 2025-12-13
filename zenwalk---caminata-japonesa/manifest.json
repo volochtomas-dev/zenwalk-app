@@ -1,0 +1,22 @@
+{
+  "short_name": "ZenWalk",
+  "name": "ZenWalk - Caminata Japonesa",
+  "description": "Caminata guiada de 40 minutos con intervalos y mindfulness.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3063/3063823.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3063/3063823.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "orientation": "portrait"
+}
