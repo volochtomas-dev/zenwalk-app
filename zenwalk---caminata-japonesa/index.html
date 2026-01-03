@@ -1,96 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>ZenWalk - Caminata Japonesa</title>
-    
-    <!-- PWA Config -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    
-    <!-- iOS Support -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="ZenWalk" />
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3063/3063823.png" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Zen Maru Gothic"', 'sans-serif'],
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ZenWalk - Caminata Japonesa</title>
+
+  <!-- PWA Config -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- iOS Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ZenWalk" />
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3063/3063823.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', 'sans-serif'],
+          },
+          colors: {
+            zen: {
+              50: '#f7f7f5',
+              100: '#efefeb',
+              200: '#dcdcdc',
+              300: '#bdbdbd',
+              400: '#989898',
+              500: '#7c7c7c',
+              600: '#656565',
+              700: '#525252',
+              800: '#464646',
+              900: '#3d3d3d',
+              950: '#262626',
             },
-            colors: {
-              zen: {
-                50: '#f7f7f5',
-                100: '#efefeb',
-                200: '#dcdcdc',
-                300: '#bdbdbd',
-                400: '#989898',
-                500: '#7c7c7c',
-                600: '#656565',
-                700: '#525252',
-                800: '#464646',
-                900: '#3d3d3d',
-                950: '#262626',
-              },
-              bamboo: {
-                500: '#84a98c',
-                600: '#52796f',
-              }
+            bamboo: {
+              500: '#84a98c',
+              600: '#52796f',
             }
           }
         }
       }
-    </script>
-    <style>
-      .mammoth-fast-walk {
-        animation: mammoth-fast-walk 0.5s infinite;
+    }
+  </script>
+  <style>
+    .mammoth-fast-walk {
+      animation: mammoth-fast-walk 0.5s infinite;
+    }
+
+    .mammoth-slow-walk {
+      animation: mammoth-slow-walk 2.5s infinite ease-in-out;
+    }
+
+    @keyframes mammoth-fast-walk {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0) scaleX(-1);
       }
-      .mammoth-slow-walk {
-        animation: mammoth-slow-walk 2.5s infinite ease-in-out;
+
+      50% {
+        transform: translateY(-6px) rotate(2deg) scaleX(-1);
       }
-      @keyframes mammoth-fast-walk {
-        0%, 100% { transform: translateY(0) rotate(0) scaleX(-1); }
-        50% { transform: translateY(-6px) rotate(2deg) scaleX(-1); }
+    }
+
+    @keyframes mammoth-slow-walk {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0) scaleX(-1);
       }
-      @keyframes mammoth-slow-walk {
-        0%, 100% { transform: translateY(0) rotate(0) scaleX(-1); }
-        25% { transform: rotate(-3deg) scaleX(-1); }
-        75% { transform: rotate(3deg) scaleX(-1); }
+
+      25% {
+        transform: rotate(-3deg) scaleX(-1);
       }
-      /* Prevent text selection for app-like feel */
-      body {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+
+      75% {
+        transform: rotate(3deg) scaleX(-1);
       }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
-    "react/": "https://esm.sh/react@^19.2.1/",
-    "react": "https://esm.sh/react@^19.2.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.2.7",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.560.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    }
+
+    /* Prevent text selection for app-like feel */
+    body {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+
+
 </head>
-  <body class="bg-zen-50 text-zen-900 antialiased h-screen overflow-hidden">
-    <div id="root" class="h-full"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+
+<body class="bg-zen-50 text-zen-900 antialiased h-screen overflow-hidden">
+  <div id="root" class="h-full"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>
